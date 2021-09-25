@@ -1,0 +1,82 @@
+<html>
+    
+    <head>
+        <title>Examen tp</title>
+        <script lang="javascript">
+            //nidhal boumaiza
+            function AdresseValide(chaine)
+            {
+                if (chaine.length==0)
+                {
+                    return false ;
+                }
+                ch=chaine.substr(0,4);
+                if (isNaN(ch)||ch.length()<4)
+                {
+                    return false ;
+                }
+            }
+           function VerifierCommande ()
+            {
+                if ( (f.s1.options.selectedIndex==0) && (f.s2.options.selectedIndex==0) && (f.s3.options.selectedIndex==0) ){
+                        alert ("selectionner 1 repas au moins ");
+                        return false ;
+                    }
+                  /*   if(AdresseValide(f.d.value)==false){
+                        alert ("saisir une addresse valide");
+                        return false ;
+                     }
+                    */
+               f.prix.value=f.s1.options[f.s1.options.selectedIndex].value * f.a.value + f.s2.options[f.s2.options.selectedIndex].value * f.b.value + f.s3.options[f.s3.options.selectedIndex].value * f.c.value ;
+               f.txt.value+="entrée "+f.s1.options[f.s1.options.selectedIndex].text+" pour "+f.a.value+" personne "+" plat "+ f.s2.options[f.s2.options.selectedIndex].text + " pour "+f.b.value+" personne "+f.s3.options[f.s3.options.selectedIndex].text+" pour "+f.c.value+"  personne ";  
+            }
+            function change()
+            {
+                if (f.s1.options.selectedIndex!=0)
+                {
+                    f.a.value=1;
+                }
+                if (f.s2.options.selectedIndex!=0)
+                {
+                    f.b.value=1;
+                }
+                if (f.s3.options.selectedIndex!=0){
+                    f.c.value=1;
+                }
+            }
+            
+        </script>
+    </head>
+
+<body>
+    <form name="f">
+    <h2 id="titre">Votre Commande</h2>
+    <h3 id="date">Date: </h3>
+    <table>
+        <tr>
+            <td>Entrée</td>
+    <td><select name="s1" onchange="change()">
+    <option value="0">aucune<option value="10">10dt<option value="15">15dt<option value="20">20dt
+    </select></td>
+    <td>pour <input type="texte" size=1 name="a" value="0" > personnes</td></tr>
+    <tr><td>Plat</td>
+    <td><select name="s2" onchange="change()">
+    <option value="0" >aucun<option value="10">10dt<option value="15">15dt<option value="20">20dt
+    </select>
+    </td>
+    <td>pour <input type="texte" size=1 name="b" value="0"> personnes</td></tr>
+    <tr><td>Dessert</td>
+    <td><select name="s3" onchange="change()">
+    <option value="0">aucun<option value="10">10dt<option value="15">15dt<option value="20">20dt
+    </select></td>
+    <td>pour <input type="texte" size=1 name="c" value="0"> personnes</td></tr>
+    </table><br><br>
+    <textarea rows=5 cols=30 name="d" placeholder="Entrez votre adresse"></textarea></td></tr>
+    <br><br>
+    <strong> prix </strong><input type="text" size=2 disabled name="prix"><br><br>
+    <input type="button" value=commander onclick="VerifierCommande()" name="b1"><br>
+    <br><br><textarea rows=5 cols=30 name="txt">Récapitulatif de commande:</textarea>
+</form>
+</body>
+    </html>
+    
